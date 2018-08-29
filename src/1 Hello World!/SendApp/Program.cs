@@ -9,12 +9,15 @@ namespace SendApp
     {
         public static void Main()
         {
+            //连接工厂
             var factory = new ConnectionFactory() { HostName = "localhost" };
+
             /*
              默认情况下，访问RabbitMQ服务的用户名和密码都是“guest”，
              这个账户有限制，默认只能通过本地网络访问（如localhost），远程网络访问受限。
              RabbitMQ服务端默认端口号为5672
              */
+
             using (var connection = factory.CreateConnection()) //创建连接
             {
                 using (var channel = connection.CreateModel()) //创建信道

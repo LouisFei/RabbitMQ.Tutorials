@@ -21,6 +21,7 @@ namespace RpcClientApp
 
         public RpcClient()
         {
+            //连接工厂
             var factory = new ConnectionFactory() { HostName = "localhost" };
 
             connection = factory.CreateConnection(); //建立连接

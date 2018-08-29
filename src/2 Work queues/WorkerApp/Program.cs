@@ -11,7 +11,9 @@ namespace WorkerApp
     {
         public static void Main()
         {
+            //连接工厂
             var factory = new ConnectionFactory() { HostName = "localhost" };
+
             using (var connection = factory.CreateConnection()) //建立连接
             {
                 using (var channel = connection.CreateModel()) //开启信道（虚拟连接）
@@ -31,7 +33,10 @@ namespace WorkerApp
 
                     Console.WriteLine(" [*] Waiting for messages.");
 
+                    //消费者
                     var consumer = new EventingBasicConsumer(channel);
+
+                    //消费者监听接收消息事件
                     consumer.Received += (model, ea) =>
                     {
                         var body = ea.Body;

@@ -10,6 +10,7 @@ namespace ReceiveApp
     {
         public static void Main()
         {
+            //连接工厂
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection()) //建立连接
             {
@@ -24,6 +25,7 @@ namespace ReceiveApp
 
                     //创建消息消费者
                     var consumer = new EventingBasicConsumer(channel);
+
                     //监听消息消费者获取消息的事件，并进行相关处理
                     consumer.Received += (model, ea) =>
                     {

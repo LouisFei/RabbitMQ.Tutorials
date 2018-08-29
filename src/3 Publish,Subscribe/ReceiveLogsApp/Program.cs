@@ -10,7 +10,9 @@ namespace ReceiveLogsApp
     {
         public static void Main()
         {
+            //连接工厂
             var factory = new ConnectionFactory() { HostName = "localhost" };
+
             using (var connection = factory.CreateConnection()) //创建连接
             {
                 using (var channel = connection.CreateModel()) //创建信道
